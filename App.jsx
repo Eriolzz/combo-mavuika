@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { VULCAN_CONFIG, COMBOS } from "./core/config";
-import { clamp, rawCode, codeLabel, loadStore, saveStore } from "./core/utils";
+import { clamp, rawCode, codeLabel, dashLabel, loadStore, saveStore } from "./core/utils";
 import { GRADE_SOUND, blip, initAudio } from "./core/audio";
 import { GRADE_COLOR, GRADE_TEXT } from "./core/tokens";
 import { PlayIcon, StopIcon, GearIcon } from "./components/Icons";
@@ -10,6 +10,7 @@ import SettingsPanel from "./components/SettingsPanel";
 import DynamicIsland from "./components/DynamicIsland";
 import { MouseOverlay, Stat } from "./components/MouseOverlay";
 import { TouchCluster, DEFAULT_TOUCH_POS } from "./components/TouchCluster";
+import { App as CapApp } from "@capacitor/app";
 import { installFakePad } from "./core/fakePad";
 
 // Dev-only: simulate a controller when the page is loaded with ?fakepad=1
@@ -775,6 +776,24 @@ export default function App() {
   useEffect(() => {
     bindingsRef.current = bindings;
   }, [bindings]);
+
+  // Android: chuột phải (OTG) bị hệ thống đổi thành nút Back và làm thoát app.
+  // Khi đang luyện tập thì bỏ qua nút Back; lúc rảnh thì Back vẫn thoát app như bình thường.
+  useEffect(() => {
+    let handle;
+    try {
+      CapApp.addListener("backButton", () => {
+        if (!running) CapApp.exitApp();
+      })
+        .then((h) => (handle = h))
+        .catch(() => {});
+    } catch (e) {}
+    return () => {
+      try {
+        handle && handle.remove();
+      } catch (e) {}
+    };
+  }, [running]);
 
   useEffect(() => {
     soundRef.current = sound;
@@ -1603,7 +1622,7 @@ export default function App() {
           </b>{" "}
           trên mỗi thanh tụ lực; bấm{" "}
           <b style={{ color: "var(--text-secondary)" }}>
-            {codeLabel(bindings.dash)}
+            {dashLabel(bindings.dash)}
           </b>{" "}
           trong thanh đó.{" "}
           <b style={{ color: "var(--severity-critical)", fontWeight: "700" }}>
