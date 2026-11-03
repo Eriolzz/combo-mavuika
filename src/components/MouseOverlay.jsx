@@ -1,5 +1,5 @@
 import React from 'react';
-import { codeLabel } from '../core/utils';
+import { codeLabel, dashLabel } from '../core/utils';
 
 export function MouseOverlay({ pressed, bindings, listen, onRebind, gamepadConnected }) {
   if (gamepadConnected) {
@@ -53,8 +53,8 @@ export function GamepadOverlay({ pressed, bindings, listen, onRebind }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16 }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8, flexShrink: 0 }}>
-        {square('gpAttack', 'Attack', bindings.gpAttack, pressed.atk)}
-        {square('gpDash', 'Dash', bindings.gpDash, pressed.dash)}
+        {square('gpAttack', 'Đánh', bindings.gpAttack, pressed.atk)}
+        {square('gpDash', 'Lướt', bindings.gpDash, pressed.dash)}
       </div>
       <BindingsMenu bindings={bindings} listen={listen} onRebind={onRebind} gamepadConnected={true} />
     </div>
@@ -73,7 +73,7 @@ export function BindingsMenu({ bindings, listen, onRebind, gamepadConnected }) {
           <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.05em', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'center', marginBottom: 2 }}>
             KBM
           </div>
-          {[['attack', 'ATTACK', bindings.attack, atkListen], ['dash', 'DASH', bindings.dash, dashListen]].map(([id, lbl, code, lis]) => (
+          {[['attack', 'ĐÁNH', bindings.attack, atkListen], ['dash', 'LƯỚT', bindings.dash, dashListen]].map(([id, lbl, code, lis]) => (
             <button key={id} onClick={() => onRebind(id)} style={{
               display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6,
               background: lis ? 'var(--bg-secondary)' : 'var(--bg-card)', 
@@ -82,7 +82,7 @@ export function BindingsMenu({ bindings, listen, onRebind, gamepadConnected }) {
             }}>
               <span style={{ fontSize: 8, fontWeight: 700, color: 'var(--text-muted)' }}>{lbl}</span>
               <span style={{ fontSize: 10, color: lis ? 'var(--text-primary)' : 'var(--text-secondary)', fontWeight: lis ? 700 : 600 }}>
-                {lis ? '...' : codeLabel(code)}
+                {lis ? '...' : (id === 'dash' ? dashLabel(code) : codeLabel(code))}
               </span>
             </button>
           ))}
@@ -103,7 +103,7 @@ export function BindingsMenu({ bindings, listen, onRebind, gamepadConnected }) {
               OK
             </div>
           )}
-          {[['gpAttack', 'ATTACK', bindings.gpAttack, gpAtkListen], ['gpDash', 'DASH', bindings.gpDash, gpDashListen]].map(([id, lbl, code, lis]) => (
+          {[['gpAttack', 'ĐÁNH', bindings.gpAttack, gpAtkListen], ['gpDash', 'LƯỚT', bindings.gpDash, gpDashListen]].map(([id, lbl, code, lis]) => (
             <button key={id} onClick={() => onRebind(id)} disabled={!gamepadConnected} style={{
               display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6,
               background: lis ? 'var(--bg-secondary)' : 'var(--bg-card)', 
@@ -120,7 +120,7 @@ export function BindingsMenu({ bindings, listen, onRebind, gamepadConnected }) {
         </div>
       </div>
       <div style={{ fontSize: 8, color: 'var(--text-muted)', textAlign: 'center', maxWidth: 280, lineHeight: 1.3 }}>
-        * Mặc định <b>Shift</b> / <b>M2</b> dùng thay nhau được cho Lướt.
+        * Mặc định: <b>Chuột trái</b> = Đánh; <b>Shift</b> hoặc <b>Chuột phải</b> = Lướt (dùng thay nhau được).
         <div style={{ marginTop: 3 }}>
           * Người dùng Vivaldi: hãy tắt "Rocker Gestures" trong cài đặt trình duyệt để bấm đồng thời hai nút chuột.
         </div>
