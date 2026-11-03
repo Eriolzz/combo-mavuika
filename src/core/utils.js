@@ -77,3 +77,10 @@ export function saveStore(bindings, settings) {
     localStorage.setItem(LS_KEY, JSON.stringify({ bindings, settings }));
   } catch (e) {}
 }
+
+// Nhãn cho nút Lướt: Shift và Chuột phải dùng thay nhau được
+export function dashLabel(code) {
+  if (code === "ShiftLeft" || code === "ShiftRight" || code === "M2")
+    return "Shift / Chuột phải";
+  return codeLabel(code);
+}
