@@ -1,30 +1,37 @@
-# Mavuika Combo Trainer
+# Trình luyện Combo Mavuika
 
-An interactive timing drill trainer for practicing Mavuika's gameplay combo (Flamestrider Drill). Built with React and Vite.
+Ứng dụng luyện nhịp tương tác để tập combo của Mavuika (Flamestrider Drill). Viết bằng React và Vite, có thể đóng gói thành app Android bằng Capacitor.
 
-## Verifying & Contributing Timings
+## Kiểm tra và chỉnh thời gian (timing)
 
-If you want to contribute or verify timing values, the core data models are located here:
+Các giá trị thời gian cốt lõi nằm ở:
 
-* **Timing Configs**: [src/core/config.js](file:///j:/vulcancombo/src/core/config.js)
-  * Defines expected ms offsets for key presses (`atk-down`, `dash-down`, `dash-up`, `atk-up`).
-  * Configures timing windows/tolerances (`perfect` and `good` margins) and speedometer decay values.
-* **Trainer Game Loop**: [src/App.jsx](file:///j:/vulcancombo/src/App.jsx)
-  * Implements keyboard/mouse event listener triggers and timing evaluation.
-  * Handles audio synthesized ticks on hit evaluation.
+* **Cấu hình timing**: `src/core/config.js`
+  * Định nghĩa mốc thời gian (ms) của các thao tác: `atk-down`, `dash-down`, `dash-up`, `atk-up`.
+  * Cấu hình cửa sổ sai số (mức `perfect` và `good`) và tốc độ giảm của đồng hồ tốc độ.
+* **Vòng lặp luyện tập**: `src/App.jsx`
+  * Xử lý sự kiện bàn phím/chuột/cảm ứng và chấm điểm thời gian.
+  * Phát âm thanh tổng hợp khi chấm mỗi lần bấm.
 
-## Getting Started
+## Bắt đầu
 
-1. **Install dependencies**:
+1. **Cài thư viện**:
    ```bash
    npm install
    ```
-2. **Start development server**:
+2. **Chạy thử trên máy**:
    ```bash
    npm run dev
    ```
-3. **Compile production static bundle**:
+3. **Build bản web tĩnh**:
    ```bash
    npm run build
    ```
-   *Static output bundles into the `dist/` directory, ready to serve.*
+   *Kết quả nằm trong thư mục `dist/`.*
+
+## Build app Android (APK)
+
+Dự án đã có sẵn workflow GitHub Actions tại `.github/workflows/build-apk.yml`:
+
+1. Đẩy code lên nhánh `main` hoặc vào tab **Actions** → **Build Android APK** → **Run workflow**.
+2. Chờ build xong, tải artifact `mavuika-trainer-apk`, giải nén ra `app-debug.apk` rồi cài lên điện thoại.
