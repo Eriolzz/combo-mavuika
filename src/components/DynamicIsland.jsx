@@ -63,8 +63,8 @@ export default function DynamicIsland({ running }) {
         setLoading(false);
       })
       .catch(() => {
-        setTutContent('<p style="color: var(--severity-critical)">Failed to load tutorials</p>');
-        setCredContent('<p style="color: var(--severity-critical)">Failed to load credits</p>');
+        setTutContent('<p style="color: var(--severity-critical)">Không tải được hướng dẫn</p>');
+        setCredContent('<p style="color: var(--severity-critical)">Không tải được danh sách ghi công</p>');
         setLoading(false);
       });
   }, [expanded]);
@@ -183,7 +183,7 @@ export default function DynamicIsland({ running }) {
               ✕
             </button>
           ) : (
-            <span style={{ fontSize: 9, color: 'var(--text-muted)', fontWeight: '600' }}>INFO</span>
+            <span style={{ fontSize: 9, color: 'var(--text-muted)', fontWeight: '600' }}>THÔNG TIN</span>
           )}
         </div>
 
@@ -200,13 +200,13 @@ export default function DynamicIsland({ running }) {
               onClick={() => setActiveTab('tutorials')}
               style={tabButtonStyle('tutorials')}
             >
-              Tutorials
+              Hướng dẫn
             </button>
             <button 
               onClick={() => setActiveTab('credits')}
               style={tabButtonStyle('credits')}
             >
-              Credits
+              Ghi công
             </button>
           </div>
         )}
@@ -225,7 +225,7 @@ export default function DynamicIsland({ running }) {
               color: 'var(--text-secondary)',
             }}
             dangerouslySetInnerHTML={{ 
-              __html: loading ? '<p>Loading...</p>' : (activeTab === 'tutorials' ? tutContent : credContent) 
+              __html: loading ? '<p>Đang tải...</p>' : (activeTab === 'tutorials' ? tutContent : credContent) 
             }}
           />
         )}

@@ -141,11 +141,11 @@ export default function SettingsPanel({
               color: "var(--text-primary)",
             }}
           >
-            <GearIcon size={18} /> Settings
+            <GearIcon size={18} /> Cài đặt
           </h2>
           <button
             onClick={onClose}
-            title="Close"
+            title="Đóng"
             style={{
               width: 32,
               height: 32,
@@ -184,7 +184,7 @@ export default function SettingsPanel({
                 marginTop: 4,
               }}
             >
-              <span style={labelStyle}>Multiplier</span>
+              <span style={labelStyle}>Hệ số nhân</span>
               <div style={{ display: "flex", gap: 6 }}>
                 {[1, 2].map((num) =>
                   segBtn(
@@ -208,7 +208,7 @@ export default function SettingsPanel({
               alignItems: "center",
             }}
           >
-            <span style={labelStyle}>Game Speed</span>
+            <span style={labelStyle}>Tốc độ game</span>
             <span
               style={{
                 fontSize: 12,
@@ -240,7 +240,7 @@ export default function SettingsPanel({
           />
           {gameSpeed < 1 && (
             <span style={{ fontSize: 10, color: "var(--text-muted)" }}>
-              Slower practice scores lower, your score scales with speed.
+              Tập chậm thì điểm thấp hơn, điểm số tính theo tốc độ.
             </span>
           )}
         </Row>
@@ -255,9 +255,9 @@ export default function SettingsPanel({
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-              <span style={labelStyle}>Freestyle</span>
+              <span style={labelStyle}>Tự do</span>
               <span style={{ fontSize: 10, color: "var(--text-muted)" }}>
-                Loop freely without the rhythm timeline.
+                Lặp tự do, không có dòng thời gian nhịp.
               </span>
             </div>
             {segBtn(
@@ -280,7 +280,7 @@ export default function SettingsPanel({
             }}
           >
             <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-              <span style={labelStyle}>Rubberbanding</span>
+              <span style={labelStyle}>Tự dịch nhịp</span>
               <span
                 style={{
                   fontSize: 10,
@@ -288,9 +288,9 @@ export default function SettingsPanel({
                   lineHeight: 1.5,
                 }}
               >
-                When you hit an input off-beat, the rest of the combo shifts to
-                follow your timing, so a slightly late tap doesn't cascade into
-                more misses. Turn off for strict, fixed timing.
+                Khi bạn bấm lệch nhịp, phần còn lại của combo sẽ dịch theo
+                nhịp của bạn, nên một lần bấm trễ nhẹ sẽ không kéo theo
+                nhiều lần trượt liên tiếp. Tắt đi nếu muốn nhịp cố định, nghiêm ngặt.
               </span>
             </div>
             {segBtn(
@@ -311,7 +311,7 @@ export default function SettingsPanel({
               alignItems: "center",
             }}
           >
-            <span style={labelStyle}>Sound FX</span>
+            <span style={labelStyle}>Âm thanh</span>
             {segBtn(
               sound,
               () => setSound((s) => !s),
@@ -329,10 +329,10 @@ export default function SettingsPanel({
             alignItems: "center",
           }}
         >
-          <span style={labelStyle}>Theme</span>
+          <span style={labelStyle}>Giao diện</span>
           <div style={{ display: "flex", gap: 6 }}>
-            {segBtn(theme === "light", () => setTheme("light"), "Light", false)}
-            {segBtn(theme === "dark", () => setTheme("dark"), "Dark", false)}
+            {segBtn(theme === "light", () => setTheme("light"), "Sáng", false)}
+            {segBtn(theme === "dark", () => setTheme("dark"), "Tối", false)}
           </div>
         </div>
       </div>

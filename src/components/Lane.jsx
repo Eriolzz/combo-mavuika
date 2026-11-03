@@ -108,13 +108,13 @@ export default function Lane({ nowRef, rate, judgeFlash, repLen, repBars, freest
   return (
     <div ref={wrapRef} style={{ position: 'relative', height: 118, overflow: 'hidden', background: 'var(--bg-secondary)', border: '1px solid var(--border-light)' }}>
       {/* lane labels */}
-      <div style={{ position: 'absolute', left: 8, top: 16, ...VB.label, fontSize: 9, color: 'var(--severity-high)', zIndex: 3 }}>ATTACK</div>
-      <div style={{ position: 'absolute', left: 8, top: 78, ...VB.label, fontSize: 9, color: 'var(--accent-gold)', zIndex: 3 }}>DASH</div>
+      <div style={{ position: 'absolute', left: 8, top: 16, ...VB.label, fontSize: 9, color: 'var(--severity-high)', zIndex: 3 }}>ĐÁNH</div>
+      <div style={{ position: 'absolute', left: 8, top: 78, ...VB.label, fontSize: 9, color: 'var(--accent-gold)', zIndex: 3 }}>LƯỚT</div>
       {/* moving bars layer */}
       <div ref={innerRef} style={{ position: 'absolute', inset: 0, zIndex: 2 }} />
       {/* judgment line */}
       <div style={{ position: 'absolute', left: judgeX, top: 0, bottom: 0, width: 2, background: flashColor, zIndex: 4, transition: 'background-color 0.12s' }} />
-      <div style={{ position: 'absolute', left: judgeX - 16, top: 2, ...VB.label, fontSize: 8, color: flashColor, zIndex: 4 }}>NOW</div>
+      <div style={{ position: 'absolute', left: judgeX - 16, top: 2, ...VB.label, fontSize: 8, color: flashColor, zIndex: 4 }}>NGAY</div>
     </div>
   );
 }

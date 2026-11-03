@@ -91,11 +91,11 @@ export function BindingsMenu({ bindings, listen, onRebind, gamepadConnected }) {
         {/* Controller Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <div style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.05em', color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'center', marginBottom: 2 }}>
-            Gamepad
+            Tay cầm
           </div>
           {!gamepadConnected && (
             <div style={{ fontSize: 8, color: 'var(--severity-critical)', textAlign: 'center', padding: '4px 0', border: '1px dashed var(--border-light)', borderRadius: 4, background: 'var(--bg-secondary)' }}>
-              NO GP
+              CHƯA KẾT NỐI
             </div>
           )}
           {gamepadConnected && (
@@ -120,9 +120,9 @@ export function BindingsMenu({ bindings, listen, onRebind, gamepadConnected }) {
         </div>
       </div>
       <div style={{ fontSize: 8, color: 'var(--text-muted)', textAlign: 'center', maxWidth: 280, lineHeight: 1.3 }}>
-        * <b>Shift</b> / <b>M2</b> are interchangeable for Dash by default.
+        * Mặc định <b>Shift</b> / <b>M2</b> dùng thay nhau được cho Lướt.
         <div style={{ marginTop: 3 }}>
-          * Vivaldi users: Disable "Rocker Gestures" in browser settings to allow simultaneous mouse clicks.
+          * Người dùng Vivaldi: hãy tắt "Rocker Gestures" trong cài đặt trình duyệt để bấm đồng thời hai nút chuột.
         </div>
       </div>
     </div>

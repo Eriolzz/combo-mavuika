@@ -18,8 +18,8 @@ export const DEFAULT_TOUCH_POS = {
 const SIZE_FACTOR = 1.69;
 
 const BUTTONS = [
-  { id: "atk", label: "ATK", sizeMul: 1.0 },
-  { id: "dash", label: "DASH", sizeMul: 0.82 },
+  { id: "atk", label: "ĐÁNH", sizeMul: 1.0 },
+  { id: "dash", label: "LƯỚT", sizeMul: 0.82 },
 ];
 
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
@@ -90,10 +90,10 @@ export function TouchCluster({
             textTransform: "uppercase",
           }}
         >
-          Rotate to landscape
+          Xoay ngang màn hình
         </div>
         <div style={{ fontSize: 13, color: "var(--text-muted)", maxWidth: 280 }}>
-          The trainer plays in landscape. Turn your device sideways.
+          Ứng dụng chạy ở chế độ ngang. Hãy xoay ngang thiết bị.
         </div>
         <button
           onClick={onExit}
@@ -107,7 +107,7 @@ export function TouchCluster({
             fontSize: 12,
           }}
         >
-          Use keyboard UI instead
+          Dùng giao diện bàn phím
         </button>
       </div>
     );
